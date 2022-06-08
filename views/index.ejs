@@ -1,0 +1,59 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ATLA Quote App</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <h1 data-position="header">Avatar the last Airbender Quote Game!</h1>
+
+    <section data-position="add-quote">
+      <h2>Add quote</h2>
+    <form action="/quotes" method="POST">
+      <input type="text" placeholder="name" name="name" />
+      <input type="text" placeholder="quote" name="quote" />
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <section data-position="update-quote">
+    <div>
+      <h2>Team Avatar saves the day!</h2>
+      <p>
+        Replace Ozai's first quote with a quote from Aang.
+      </p>
+      <button id="update-button">Replace Ozai's quote</button>
+    </div>
+  </section>
+
+  <section data-position="quote">
+    <h2> Quotes </h2>
+<ul class="quotes">
+  <!-- Loop through quotes -->
+  <% for(var i = 0; i < quotes.length; i++) {%>
+    <li class="quote">
+      <!-- Output name from the iterated quote object -->
+      <span><%= quotes[i].name %></span>:
+      <!-- Output quote from the iterated quote object -->
+      <span><%= quotes[i].quote %></span>
+    </li>
+  <% } %>
+</ul>
+  </section>
+
+<section data-position="delete-quote">
+  <div>
+    <h2>Remove Ozai!</h2>
+    <p>
+      Delete one of Ozai's quotes. Does nothing if there are no more quotes by Ozai.
+    </p>
+    <button id="delete-button">Delete Ozai quote</button>
+  </div>
+</section>
+  <div id="message"></div>
+  <script src="/main.js"></script>
+  </body>
+</html>
