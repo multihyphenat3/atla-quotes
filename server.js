@@ -1,5 +1,6 @@
 console.log('If you want to be a bender, you have to let go of fear')
 const express = require('express')// for whatever we do in this file just shows we'll be using express
+const cors = require('cors')
 const bodyParser = require('body-parser')
 const app = express()//shortening for where we want to call express later and we can just say app
 const MongoClient = require('mongodb').MongoClient
@@ -14,6 +15,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     app.use(bodyParser.urlencoded({extended: true}))
     app.use(express.static('public'))
     app.use(bodyParser.json())
+    app.use(cors())
 
 
 
